@@ -12,15 +12,17 @@ args = parser.parse_args()
 def _parse_contigs(bed_file):
 	'''
 	Parse each line of a bed file
-	chr1	1000	2000
+	chr1	1000	2000	name
 	to
-	[(chr1,1000,2000)]
+	[(chr1,1000,2000,name)]
 	'''
 	contigs = []
 	with open(bed_file,'r') as f:
 		for line in f:
 			line = line.strip().split()
-			contigs.append((line[0],int(line[1]),int(line[2])))
+			line[1]=int(line[1])
+			line[2]=int(line[2])
+			contigs.append(line)
 	return contigs
 
 def _circosize_line(line, contigs):
@@ -38,9 +40,9 @@ def _circosize_line(line, contigs):
 	for i in range(len(contigs)):
 		c = contigs[i]
 		if line[0]==c[0] and line[1]>=c[1] and line[2]<=c[2]:
-			seg1.append(str(i+1))
+			seg1.append(c[3])
 		if line[3]==c[0] and line[4]>=c[1] and line[5]<=c[2]:
-			seg2.append(str(i+1))
+			seg2.append(c[3])
 	bezier=1.5**(1-abs(line[1]-line[4])/(3*10000))*.4
 	lines = []
 	for s1 in seg1:
