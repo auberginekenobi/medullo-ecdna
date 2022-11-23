@@ -1,6 +1,11 @@
 # Project
 ./data/
 */out/
+*.bdg
+*.tsv
+*.png
+*.svg
+*.bedpe
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
