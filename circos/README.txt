@@ -1,5 +1,11 @@
 Circos notes
 
+##################################
+hg38:
+	D458, MB106, MB248, MB268, MB275, RCMB56
+hg19:
+	PT_FN4GEEFR
+
 2/18/2020
 
 Hello world
